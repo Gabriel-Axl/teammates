@@ -145,6 +145,250 @@ public class StudentsLogicTest extends BaseLogicTest {
                 + StudentsLogic.ERROR_INVALID_TEAM_NAME_INSTRUCTION;
 
         assertEquals(expectedInvalidTeamError, ee.getMessage());
+
+        ______TS("Failure case id1: invalid team");
+
+        studentList.clear();
+        studentList.add(StudentAttributes
+                .builder(courseId, "email1@gmail.com")
+                .withName("estudante 1")
+                .withSectionName("seção 1")
+                .withTeamName("equipe 1")
+                .withComment("")
+                .build());
+        studentList.add(StudentAttributes
+                .builder(courseId, "email2@gmail.com")
+                .withName("estudante 2")
+                .withSectionName("seção 2")
+                .withTeamName("equipe 1")
+                .withComment("")
+                .build());
+        ee = assertThrows(EnrollException.class, () -> studentsLogic.validateSectionsAndTeams(studentList, courseId));
+
+        expectedInvalidTeamError =
+                String.format(StudentsLogic.ERROR_INVALID_TEAM_NAME, "equipe 1", "seção 1", "seção 2")
+                + " "
+                + StudentsLogic.ERROR_INVALID_TEAM_NAME_INSTRUCTION;
+
+        assertEquals(expectedInvalidTeamError, ee.getMessage());
+
+        ______TS("Failure case id2: invalid team");
+
+        studentList.clear();
+        studentList.add(StudentAttributes
+                .builder(courseId, "email1@gmail.com")
+                .withName("estudante 1")
+                .withSectionName("seção 1")
+                .withTeamName("equipe 1")
+                .withComment("")
+                .build());
+        studentList.add(StudentAttributes
+                .builder(courseId, "email2@gmail.com")
+                .withName("estudante 2")
+                .withSectionName("seção 2")
+                .withTeamName("equipe 1")
+                .withComment("")
+                .build());
+        studentList.add(StudentAttributes
+                .builder(courseId, "email3@gmail.com")
+                .withName("estudante 3")
+                .withSectionName("seção 3")
+                .withTeamName("equipe 1")
+                .withComment("")
+                .build());
+        ee = assertThrows(EnrollException.class, () -> studentsLogic.validateSectionsAndTeams(studentList, courseId));
+
+        expectedInvalidTeamError =
+                String.format(StudentsLogic.ERROR_INVALID_TEAM_NAME, "equipe 1", "seção 1", "seção 2")
+                + " "
+                + StudentsLogic.ERROR_INVALID_TEAM_NAME_INSTRUCTION;
+
+        assertEquals(expectedInvalidTeamError, ee.getMessage());
+
+        ______TS("Success case id3: valid team");
+        
+        studentList.clear();
+        studentList.add(StudentAttributes
+                .builder(courseId, "email1@gmail.com")
+                .withName("estudante 1")
+                .withSectionName("seção 1")
+                .withTeamName("equipe 1")
+                .withComment("")
+                .build());
+        studentList.add(StudentAttributes
+                .builder(courseId, "email2@gmail.com")
+                .withName("estudante 2")
+                .withSectionName("seção 1")
+                .withTeamName("equipe 1")
+                .withComment("")
+                .build());
+        ee = assertThrows(EnrollException.class, () -> studentsLogic.validateSectionsAndTeams(studentList, courseId));
+
+        expectedInvalidTeamError =
+                String.format(" ");
+
+
+        assertEquals(expectedInvalidTeamError, ee.getMessage());
+
+        ______TS("Failure case id4: invalid team");
+
+        studentList.clear();
+        studentList.add(StudentAttributes
+                .builder(courseId, "email1@gmail.com")
+                .withName("estudante 1")
+                .withSectionName("seção 1")
+                .withTeamName("equipe 1")
+                .withComment("")
+                .build());
+        studentList.add(StudentAttributes
+                .builder(courseId, "email2@gmail.com")
+                .withName("estudante 2")
+                .withSectionName("seção 2")
+                .withTeamName("equipe 1")
+                .withComment("")
+                .build());
+        studentList.add(StudentAttributes
+                .builder(courseId, "email3@gmail.com")
+                .withName("estudante 3")
+                .withSectionName("seção 2")
+                .withTeamName("equipe 1")
+                .withComment("")
+                .build());
+        ee = assertThrows(EnrollException.class, () -> studentsLogic.validateSectionsAndTeams(studentList, courseId));
+
+        expectedInvalidTeamError =
+                String.format(StudentsLogic.ERROR_INVALID_TEAM_NAME, "equipe 1", "seção 1", "seção 2")
+                + " "
+                + StudentsLogic.ERROR_INVALID_TEAM_NAME_INSTRUCTION;
+
+        assertEquals(expectedInvalidTeamError, ee.getMessage());
+
+        ______TS("Success case id5: valid team");
+        
+        studentList.clear();
+        studentList.add(StudentAttributes
+                .builder(courseId, "email1@gmail.com")
+                .withName("estudante 1")
+                .withSectionName("seção 1")
+                .withTeamName("equipe 1")
+                .withComment("")
+                .build());
+        studentList.add(StudentAttributes
+                .builder(courseId, "email2@gmail.com")
+                .withName("estudante 2")
+                .withSectionName("seção 2")
+                .withTeamName("equipe 2")
+                .withComment("")
+                .build());
+        ee = assertThrows(EnrollException.class, () -> studentsLogic.validateSectionsAndTeams(studentList, courseId));
+
+        expectedInvalidTeamError =
+                String.format(" ");
+
+
+        assertEquals(expectedInvalidTeamError, ee.getMessage());
+
+
+        ______TS("Failure case id6: invalid team");
+
+        studentList.clear();
+        studentList.add(StudentAttributes
+                .builder(courseId, "email1@gmail.com")
+                .withName("estudante 1")
+                .withSectionName("seção 1")
+                .withTeamName("equipe 1")
+                .withComment("")
+                .build());
+        studentList.add(StudentAttributes
+                .builder(courseId, "email2@gmail.com")
+                .withName("estudante 2")
+                .withSectionName("seção 2")
+                .withTeamName("equipe 1")
+                .withComment("")
+                .build());
+        studentList.add(StudentAttributes
+                .builder(courseId, "email3@gmail.com")
+                .withName("estudante 3")
+                .withSectionName("seção 2")
+                .withTeamName("equipe 2")
+                .withComment("")
+                .build());
+        studentList.add(StudentAttributes
+                .builder(courseId, "email4@gmail.com")
+                .withName("estudante 4")
+                .withSectionName("seção 3")
+                .withTeamName("equipe 1")
+                .withComment("")
+                .build());
+        ee = assertThrows(EnrollException.class, () -> studentsLogic.validateSectionsAndTeams(studentList, courseId));
+
+        expectedInvalidTeamError =
+        String.format(StudentsLogic.ERROR_INVALID_TEAM_NAME, "equipe 1", "seção 1", "seção 2" + StudentsLogic.ERROR_INVALID_TEAM_NAME, "equipe 1", "seção 2", "seção 3")
+        + " "
+        + StudentsLogic.ERROR_INVALID_TEAM_NAME_INSTRUCTION;
+
+        assertEquals(expectedInvalidTeamError, ee.getMessage());
+
+        ______TS("Success case id7: valid team");
+
+        studentList.clear();
+        studentList.add(StudentAttributes
+                .builder(courseId, "email1@gmail.com")
+                .withName("estudante 1")
+                .withSectionName("seção 1")
+                .withTeamName("equipe 1")
+                .withComment("")
+                .build());
+        studentList.add(StudentAttributes
+                .builder(courseId, "email2@gmail.com")
+                .withName("estudante 2")
+                .withSectionName("seção 1")
+                .withTeamName("equipe 2")
+                .withComment("")
+                .build());
+
+        studentsLogic.validateSectionsAndTeams(studentList, courseId);
+
+        ______TS("Failure case id8: invalid team");
+
+        studentList.clear();
+        studentList.add(StudentAttributes
+                .builder(courseId, "email1@gmail.com")
+                .withName("estudante 1")
+                .withSectionName("seção 1")
+                .withTeamName("equipe 1")
+                .withComment("")
+                .build());
+        studentList.add(StudentAttributes
+                .builder(courseId, "email2@gmail.com")
+                .withName("estudante 2")
+                .withSectionName("seção 2")
+                .withTeamName("equipe 1")
+                .withComment("")
+                .build());
+        studentList.add(StudentAttributes
+                .builder(courseId, "email3@gmail.com")
+                .withName("estudante 3")
+                .withSectionName("seção 3")
+                .withTeamName("equipe 2")
+                .withComment("")
+                .build());
+        studentList.add(StudentAttributes
+                .builder(courseId, "email4@gmail.com")
+                .withName("estudante 4")
+                .withSectionName("seção 3")
+                .withTeamName("equipe 1")
+                .withComment("")
+                .build());
+        ee = assertThrows(EnrollException.class, () -> studentsLogic.validateSectionsAndTeams(studentList, courseId));
+
+        expectedInvalidTeamError =
+        String.format(StudentsLogic.ERROR_INVALID_TEAM_NAME, "equipe 1", "seção 1", "seção 2" + StudentsLogic.ERROR_INVALID_TEAM_NAME, "equipe 1", "seção 2", "seção 3")
+        + " "
+        + StudentsLogic.ERROR_INVALID_TEAM_NAME_INSTRUCTION;
+
+        assertEquals(expectedInvalidTeamError, ee.getMessage());
+
     }
 
     @Test
